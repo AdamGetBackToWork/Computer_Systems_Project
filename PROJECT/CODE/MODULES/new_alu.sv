@@ -61,19 +61,19 @@ module new_alu(i_op, i_arg_A, i_arg_B, i_clk, i_reset, o_result, o_status);
 					end
 					
 					/*i_op[1:0] == 2'b01 odpowiada operacji dodawania*/
-					2'b00 : begin
+					2'b01 : begin
 						finale_cache_status = M_addition_status;
 						finale_cache_result = M_addition_result;
 					end
 					
 					/*i_op[1:0] == 2'b10 odpowiada operacji dzielenia*/
-					2'b00 : begin
+					2'b10 : begin
 						finale_cache_status = M_division_status;
 						finale_cache_result = M_division_result;
 					end
 					
 					/*i_op[1:0] == 2'b11 odpowiada operacji zamiany z kodu ZM na U2*/
-					2'b00 : begin
+					2'b11 : begin
 						finale_cache_status = M_zm_to_u2_status;
 						finale_cache_result = M_zm_to_u2_result;
 					end
