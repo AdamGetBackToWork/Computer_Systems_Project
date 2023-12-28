@@ -1,5 +1,5 @@
 `timescale 1ps/1ps
-`include "./../CODE/MODULES/new_alu.sv"
+`include "./new_alu.sv"
 
 /*Moduł służący do testowania funkcjonalności 'alu.sv'*/
 
@@ -28,11 +28,10 @@ module testbench;
     initial begin
         $dumpfile("signals.vcd");
         $dumpvars(0, testbench);
-                
-        s_op = 2'b00;
-        s_reset = 1'b1;
-        
+   
         /*1.) Testowanie operacji Y = (A >> ~B)*/
+        s_op = 4'b0000;
+        s_reset = 1'b1;
 
         /*Przesunięcie o 1 bit w prawo*/
         s_clk = 0;
@@ -42,7 +41,7 @@ module testbench;
         s_clk = 1;
         #1
 
-        $finish
+        $finish;
 	end
 
 endmodule

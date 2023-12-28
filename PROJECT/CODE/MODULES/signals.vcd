@@ -1,0 +1,63 @@
+$date
+	Thu Dec 28 01:21:38 2023
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module testbench $end
+$var wire 4 ! simulation_s_status [3:0] $end
+$var wire 8 " simulation_s_result [7:0] $end
+$var reg 8 # s_arg_A [7:0] $end
+$var reg 8 $ s_arg_B [7:0] $end
+$var reg 1 % s_clk $end
+$var reg 4 & s_op [3:0] $end
+$var reg 1 ' s_reset $end
+$scope module new_alu_model_simulation $end
+$var wire 8 ( i_arg_A [7:0] $end
+$var wire 8 ) i_arg_B [7:0] $end
+$var wire 1 % i_clk $end
+$var wire 4 * i_op [3:0] $end
+$var wire 1 ' i_reset $end
+$var wire 4 + M_zm_to_u2_status [3:0] $end
+$var wire 8 , M_zm_to_u2_result [7:0] $end
+$var wire 4 - M_right_shift_status [3:0] $end
+$var wire 8 . M_right_shift_result [7:0] $end
+$var wire 4 / M_division_status [3:0] $end
+$var wire 8 0 M_division_result [7:0] $end
+$var wire 4 1 M_addition_status [3:0] $end
+$var wire 8 2 M_addition_result [7:0] $end
+$var reg 8 3 finale_cache_result [7:0] $end
+$var reg 4 4 finale_cache_status [3:0] $end
+$var reg 8 5 o_result [7:0] $end
+$var reg 4 6 o_status [3:0] $end
+$scope module mod_addition_1 $end
+$var wire 8 7 i_arg_A [7:0] $end
+$var wire 8 8 i_arg_B [7:0] $end
+$var reg 9 9 cache [8:0] $end
+$var reg 8 : cache_B [7:0] $end
+$var reg 8 ; cache_result [7:0] $end
+$var reg 4 < cache_status [3:0] $end
+$upscope $end
+$scope module mod_division_1 $end
+$var wire 8 = i_arg_A [7:0] $end
+$var wire 8 > i_arg_B [7:0] $end
+$var reg 8 ? cache_result [7:0] $end
+$var reg 4 @ cache_status [3:0] $end
+$upscope $end
+$scope module mod_right_shift_1 $end
+$var wire 8 A i_arg_A [7:0] $end
+$var wire 8 B i_arg_B [7:0] $end
+$var reg 8 C cache_result [7:0] $end
+$var reg 4 D cache_status [3:0] $end
+$upscope $end
+$scope module mod_zm_to_u2 $end
+$var wire 8 E i_arg_A [7:0] $end
+$var wire 8 F i_arg_B [7:0] $end
+$var reg 8 G cache_result [7:0] $end
+$var reg 4 H cache_status [3:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
