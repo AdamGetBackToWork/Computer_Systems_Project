@@ -115,3 +115,4 @@ module new_alu(i_op, i_arg_A, i_arg_B, i_clk, i_reset, o_result, o_status);
 
 
 endmodule
+
