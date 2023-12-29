@@ -3,6 +3,11 @@
 `include "./../SUBMODULES/MACIEK/right_shift.sv"
 `include "./../SUBMODULES/MACIEK/zm_to_u2.sv"
 
+`include "./../SUBMODULES/ADAM/sub_and_mul.sv"
+`include "./../SUBMODULES/ADAM/comparison_2.sv"
+`include "./../SUBMODULES/ADAM/add_bit.sv"
+`include "./../SUBMODULES/ADAM/u2_to_zm.sv"
+
 module new_alu(i_op, i_arg_A, i_arg_B, i_clk, i_reset, o_result, o_status);
 
 	/*Dodałem od siebie parametr K, ponieważ w instrukcji nie ma zdefiniowanego romzmiaru wyjścia.
@@ -29,12 +34,21 @@ module new_alu(i_op, i_arg_A, i_arg_B, i_clk, i_reset, o_result, o_status);
 	logic [3:0] M_addition_status, M_division_status, M_right_shift_status, M_zm_to_u2_status;
 	logic [M-1:0] M_addition_result, M_division_result, M_right_shift_result, M_zm_to_u2_result;
 	
+	logic [3:0] A_sub_and_mul_status, A_comparison_2_status, A_add_bit_status, A_u2_to_zm_status;
+	logic [M-1:0] A_sub_and_mul_result, A_comparison_2_result, A_add_bit_result, A_u2_to_zm_result;
+	
 	/*Inicjalizacja poszczególnych modułów*/
 	
 	addition_1 #(.M(M), .K(K)) mod_addition_1(.i_arg_A(i_arg_A), .i_arg_B(i_arg_B), .cache_status(M_addition_status), .cache_result(M_addition_result));
 	division_1 #(.M(M), .K(K)) mod_division_1(.i_arg_A(i_arg_A), .i_arg_B(i_arg_B), .cache_status(M_division_status), .cache_result(M_division_result));
 	right_shift_1 #(.M(M), .K(K)) mod_right_shift_1(.i_arg_A(i_arg_A), .i_arg_B(i_arg_B), .cache_status(M_right_shift_status), .cache_result(M_right_shift_result));
 	zm_to_u2 #(.M(M), .K(K)) mod_zm_to_u2(.i_arg_A(i_arg_A), .i_arg_B(i_arg_B), .cache_status(M_zm_to_u2_status), .cache_result(M_zm_to_u2_result));
+	
+	sub_and_mul #(.M(M), .K(K)) mod_sub_and_mul(.i_arg_A(i_arg_A), .i_arg_B(i_arg_B), .cache_status(A_sub_and_mul_status), .cache_result(A_sub_and_mul_result));
+	comparison_2 #(.M(M), .K(K)) mod_comparison_2(.i_arg_A(i_arg_A), .i_arg_B(i_arg_B), .cache_status(A_comparison_2_status), .cache_result(A_comparison_2_result));	
+	add_bit #(.M(M), .K(K)) mod_add_bit(.i_arg_A(i_arg_A), .i_arg_B(i_arg_B), .cache_status(A_add_bit_status), .cache_result(A_add_bit_result));	
+	u2_to_zm #(.M(M), .K(K)) mod_u2_to_zm(.i_arg_A(i_arg_A), .i_arg_B(i_arg_B), .cache_status(A_u2_to_zm_status), .cache_result(A_u2_to_zm_result));
+	
 	
 	/*Część kombinacyjna układu*/
 	
@@ -81,6 +95,35 @@ module new_alu(i_op, i_arg_A, i_arg_B, i_clk, i_reset, o_result, o_status);
 				endcase
 			
 			end
+		
+			2'b01 : begin
+				
+				case(i_op[1:0])
+				
+					2'b00 : begin
+						finale_cache_status = A_sub_and_mul_status;
+						finale_cache_result = A_sub_and_mul_result;
+					end
+				
+					2'b01 : begin
+						finale_cache_status = A_comparison_2_status;
+						finale_cache_result = A_comparison_2_result;
+					end
+					
+					2'b10 : begin
+						finale_cache_status = A_add_bit_status;
+						finale_cache_result = A_add_bit_result;
+					end
+					
+					2'b11 : begin
+						finale_cache_status = A_u2_to_zm_status;
+						finale_cache_result = A_u2_to_zm_result;
+					end
+				endcase
+			end
+			
+			
+					
 		
 		endcase
 		

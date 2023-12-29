@@ -1,5 +1,5 @@
 $date
-	Thu Dec 28 17:56:15 2023
+	Fri Dec 29 22:17:18 2023
 $end
 $version
 	Icarus Verilog
@@ -9,137 +9,96 @@ $timescale
 $end
 $scope module testbench $end
 $var wire 4 ! simulation_s_status [3:0] $end
-$var wire 8 " simulation_s_result [7:0] $end
-$var parameter 32 # s_K $end
-$var parameter 32 $ s_M $end
-$var parameter 32 % s_N $end
-$var reg 8 & s_arg_A [7:0] $end
-$var reg 8 ' s_arg_B [7:0] $end
-$var reg 1 ( s_clk $end
-$var reg 4 ) s_op [3:0] $end
-$var reg 1 * s_reset $end
+$var wire 4 " simulation_s_result [3:0] $end
+$var reg 4 # s_arg_A [3:0] $end
+$var reg 4 $ s_arg_B [3:0] $end
+$var reg 1 % s_clk $end
+$var reg 4 & s_op [3:0] $end
+$var reg 1 ' s_reset $end
 $scope module new_alu_model_simulation $end
-$var wire 8 + i_arg_A [7:0] $end
-$var wire 8 , i_arg_B [7:0] $end
-$var wire 1 ( i_clk $end
-$var wire 4 - i_op [3:0] $end
-$var wire 1 * i_reset $end
-$var wire 4 . M_zm_to_u2_status [3:0] $end
-$var wire 8 / M_zm_to_u2_result [7:0] $end
-$var wire 4 0 M_right_shift_status [3:0] $end
-$var wire 8 1 M_right_shift_result [7:0] $end
-$var wire 4 2 M_division_status [3:0] $end
-$var wire 8 3 M_division_result [7:0] $end
-$var wire 4 4 M_addition_status [3:0] $end
-$var wire 8 5 M_addition_result [7:0] $end
-$var parameter 32 6 K $end
-$var parameter 32 7 M $end
-$var parameter 32 8 N $end
-$var reg 8 9 finale_cache_result [7:0] $end
-$var reg 4 : finale_cache_status [3:0] $end
-$var reg 8 ; o_result [7:0] $end
-$var reg 4 < o_status [3:0] $end
+$var wire 4 ( i_arg_A [3:0] $end
+$var wire 4 ) i_arg_B [3:0] $end
+$var wire 1 % i_clk $end
+$var wire 4 * i_op [3:0] $end
+$var wire 1 ' i_reset $end
+$var wire 4 + M_zm_to_u2_status [3:0] $end
+$var wire 4 , M_zm_to_u2_result [3:0] $end
+$var wire 4 - M_right_shift_status [3:0] $end
+$var wire 4 . M_right_shift_result [3:0] $end
+$var wire 4 / M_division_status [3:0] $end
+$var wire 4 0 M_division_result [3:0] $end
+$var wire 4 1 M_addition_status [3:0] $end
+$var wire 4 2 M_addition_result [3:0] $end
+$var wire 1 3 A_u2_to_zm_status $end
+$var wire 1 4 A_u2_to_zm_result $end
+$var wire 1 5 A_sub_and_mul_status $end
+$var wire 1 6 A_sub_and_mul_result $end
+$var wire 1 7 A_comparison_2_status $end
+$var wire 1 8 A_comparison_2_result $end
+$var wire 1 9 A_add_bit_status $end
+$var wire 1 : A_add_bit_result $end
+$var reg 4 ; finale_cache_result [3:0] $end
+$var reg 4 < finale_cache_status [3:0] $end
+$var reg 4 = o_result [3:0] $end
+$var reg 4 > o_status [3:0] $end
+$scope module mod_add_bit $end
+$var wire 4 ? i_arg_A [3:0] $end
+$var wire 4 @ i_arg_B [3:0] $end
+$var reg 4 A cache_result [3:0] $end
+$var reg 4 B cache_status [3:0] $end
+$var reg 4 C s_A [3:0] $end
+$var reg 4 D s_B [3:0] $end
+$var reg 4 E sum [3:0] $end
+$upscope $end
 $scope module mod_addition_1 $end
-$var wire 8 = i_arg_A [7:0] $end
-$var wire 8 > i_arg_B [7:0] $end
-$var parameter 32 ? K $end
-$var parameter 32 @ M $end
-$var reg 9 A cache [8:0] $end
-$var reg 8 B cache_B [7:0] $end
-$var reg 8 C cache_result [7:0] $end
-$var reg 4 D cache_status [3:0] $end
+$var wire 4 F i_arg_A [3:0] $end
+$var wire 4 G i_arg_B [3:0] $end
+$var reg 5 H cache [4:0] $end
+$var reg 4 I cache_B [3:0] $end
+$var reg 4 J cache_result [3:0] $end
+$var reg 4 K cache_status [3:0] $end
+$upscope $end
+$scope module mod_comparison_2 $end
+$var wire 4 L i_arg_A [3:0] $end
+$var wire 4 M i_arg_B [3:0] $end
+$var reg 4 N cache_result [3:0] $end
+$var reg 4 O cache_status [3:0] $end
+$var reg 4 P comp_A [3:0] $end
+$var reg 4 Q comp_B [3:0] $end
 $upscope $end
 $scope module mod_division_1 $end
-$var wire 8 E i_arg_A [7:0] $end
-$var wire 8 F i_arg_B [7:0] $end
-$var parameter 32 G K $end
-$var parameter 32 H M $end
-$var reg 8 I cache_result [7:0] $end
-$var reg 4 J cache_status [3:0] $end
+$var wire 4 R i_arg_A [3:0] $end
+$var wire 4 S i_arg_B [3:0] $end
+$var reg 4 T cache_result [3:0] $end
+$var reg 4 U cache_status [3:0] $end
 $upscope $end
 $scope module mod_right_shift_1 $end
-$var wire 8 K i_arg_A [7:0] $end
-$var wire 8 L i_arg_B [7:0] $end
-$var parameter 32 M K $end
-$var parameter 32 N M $end
-$var reg 8 O cache_result [7:0] $end
-$var reg 4 P cache_status [3:0] $end
+$var wire 4 V i_arg_A [3:0] $end
+$var wire 4 W i_arg_B [3:0] $end
+$var reg 4 X cache_result [3:0] $end
+$var reg 4 Y cache_status [3:0] $end
+$upscope $end
+$scope module mod_sub_and_mul $end
+$var wire 4 Z i_arg_A [3:0] $end
+$var wire 4 [ i_arg_B [3:0] $end
+$var reg 4 \ cache [3:0] $end
+$var reg 4 ] cache_result [3:0] $end
+$var reg 4 ^ cache_status [3:0] $end
+$var reg 4 _ s_A [3:0] $end
+$var reg 4 ` s_B [3:0] $end
+$var reg 4 a sum [3:0] $end
+$upscope $end
+$scope module mod_u2_to_zm $end
+$var wire 4 b i_arg_A [3:0] $end
+$var wire 4 c i_arg_B [3:0] $end
+$var reg 4 d cache_result [3:0] $end
+$var reg 4 e cache_status [3:0] $end
 $upscope $end
 $scope module mod_zm_to_u2 $end
-$var wire 8 Q i_arg_A [7:0] $end
-$var wire 8 R i_arg_B [7:0] $end
-$var parameter 32 S K $end
-$var parameter 32 T M $end
-$var reg 8 U cache_result [7:0] $end
-$var reg 4 V cache_status [3:0] $end
+$var wire 4 f i_arg_A [3:0] $end
+$var wire 4 g i_arg_B [3:0] $end
+$var reg 4 h cache_result [3:0] $end
+$var reg 4 i cache_status [3:0] $end
 $upscope $end
 $upscope $end
 $upscope $end
-$enddefinitions $end
-$comment Show the parameter values. $end
-$dumpall
-b1000 T
-b1000 S
-b1000 N
-b1000 M
-b1000 H
-b1000 G
-b1000 @
-b1000 ?
-b100 8
-b1000 7
-b1000 6
-b100 %
-b1000 $
-b1000 #
-$end
-#0
-$dumpvars
-b0 V
-b10110100 U
-b11111110 R
-b11001100 Q
-b0 P
-b1100110 O
-b11111110 L
-b11001100 K
-b0 J
-b0 I
-b11111110 F
-b11001100 E
-b0 D
-b11001011 C
-b1 B
-bx A
-b11111110 >
-b11001100 =
-bx <
-bx ;
-b0 :
-b1100110 9
-b11001011 5
-b0 4
-b0 3
-b0 2
-b1100110 1
-b0 0
-b10110100 /
-b0 .
-b0 -
-b11111110 ,
-b11001100 +
-1*
-b0 )
-0(
-b11111110 '
-b11001100 &
-bx "
-bx !
-$end
-#1
-b0 !
-b0 <
-b1100110 "
-b1100110 ;
-1(
-#2

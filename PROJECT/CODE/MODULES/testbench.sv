@@ -1,7 +1,7 @@
 `timescale 1ps/1ps
 `include "./new_alu.sv"
 
-/*Moduł służący do testowania funkcjonalności 'alu.sv'*/
+/*Moduł służący do testowania funkcjonalności 'new_alu.sv'*/
 
 module testbench;
 
