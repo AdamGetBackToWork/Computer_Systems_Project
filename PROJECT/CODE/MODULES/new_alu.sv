@@ -8,6 +8,11 @@
 `include "./../SUBMODULES/ADAM/add_bit.sv"
 `include "./../SUBMODULES/ADAM/u2_to_zm.sv"
 
+`include "./../SUBMODULES/KACPER/absolute.sv"
+`include "./../SUBMODULES/KACPER/comparison_1.sv"
+`include "./../SUBMODULES/KACPER/division.sv"
+`include "./../SUBMODULES/KACPER/right_shift_2.sv"
+
 module new_alu(i_op, i_arg_A, i_arg_B, i_clk, i_reset, o_result, o_status);
 
 	/*Dodałem od siebie parametr K, ponieważ w instrukcji nie ma zdefiniowanego romzmiaru wyjścia.
@@ -36,6 +41,9 @@ module new_alu(i_op, i_arg_A, i_arg_B, i_clk, i_reset, o_result, o_status);
 	
 	logic [3:0] A_sub_and_mul_status, A_comparison_2_status, A_add_bit_status, A_u2_to_zm_status;
 	logic [M-1:0] A_sub_and_mul_result, A_comparison_2_result, A_add_bit_result, A_u2_to_zm_result;
+
+	logic [3:0] K_absolute_status, K_comparison_1_status, K_division_status, K_right_shift_2_status;
+	logic [M-1:0] K_absolute_result, K_comparison_1_result, K_division_result, K_right_shift_2_result;
 	
 	/*Inicjalizacja poszczególnych modułów*/
 	
@@ -48,6 +56,11 @@ module new_alu(i_op, i_arg_A, i_arg_B, i_clk, i_reset, o_result, o_status);
 	comparison_2 #(.M(M), .K(K)) mod_comparison_2(.i_arg_A(i_arg_A), .i_arg_B(i_arg_B), .cache_status(A_comparison_2_status), .cache_result(A_comparison_2_result));	
 	add_bit #(.M(M), .K(K)) mod_add_bit(.i_arg_A(i_arg_A), .i_arg_B(i_arg_B), .cache_status(A_add_bit_status), .cache_result(A_add_bit_result));	
 	u2_to_zm #(.M(M), .K(K)) mod_u2_to_zm(.i_arg_A(i_arg_A), .i_arg_B(i_arg_B), .cache_status(A_u2_to_zm_status), .cache_result(A_u2_to_zm_result));
+
+	absolute #(.M(M), .K(K)) mod_absolute(.i_arg_B(i_arg_B), .o_status(K_absolute_status), .o_newB(K_absolute_result));
+	comparison_1 #(.M(M), .K(K)) mod_comparison_1(.i_arg_A(i_arg_A), .i_arg_B(i_arg_B), .o_status(K_comparison_1_status), .o_eqA(K_comparison_1_result));	
+	division #(.M(M), .K(K)) mod_division(.i_arg_A(i_arg_A), .i_arg_B(i_arg_B), .o_status(K_division_status), .o_div(K_division_result));	
+	right_shift_2 #(.M(M), .K(K)) mod_right_shift_2(.i_arg_A(i_arg_A), .i_arg_B(i_arg_B), .o_status(K_right_shift_2_status), .o_newA(K_right_shift_2_result));
 	
 	
 	/*Część kombinacyjna układu*/
@@ -122,6 +135,31 @@ module new_alu(i_op, i_arg_A, i_arg_B, i_clk, i_reset, o_result, o_status);
 				endcase
 			end
 			
+			2'b10 : begin
+				
+				case(i_op[1:0])
+				
+					2'b00 : begin
+						finale_cache_status = K_absolute_status;
+						finale_cache_result = K_absolute_result;
+					end
+				
+					2'b01 : begin
+						finale_cache_status = K_comparison_1_status;
+						finale_cache_result = K_comparison_1_result;
+					end
+					
+					2'b10 : begin
+						finale_cache_status = K_division_status;
+						finale_cache_result = K_division_result;
+					end
+					
+					2'b11 : begin
+						finale_cache_status = K_right_shift_2_status;
+						finale_cache_result = K_right_shift_2_result;
+					end
+				endcase
+			end
 			
 					
 		

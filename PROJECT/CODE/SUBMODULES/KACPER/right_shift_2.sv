@@ -1,9 +1,10 @@
 module right_shift_2 (i_arg_A, i_arg_B, o_newA, o_status);
-    parameter m = 8;
-    input logic signed [m-1:0] i_arg_A, i_arg_B;
-    output logic [m-1:0] o_newA;
+    parameter M = 8;
+    parameter K = 8;
+    input logic signed [M-1:0] i_arg_A, i_arg_B;
+    output logic [K-1:0] o_newA;
     output logic [3:0] o_status;
-    logic [m-1:0] s_s;
+    logic [M-1:0] s_s;
     integer x;
     integer a;
 
@@ -22,7 +23,7 @@ module right_shift_2 (i_arg_A, i_arg_B, o_newA, o_status);
             s_s = ~i_arg_A >> i_arg_B;
             
             // Check if o_newA is within the valid range
-            if (s_s <= m-1)
+            if (s_s <= K-1)
             begin
                 o_newA = s_s;
             end
@@ -33,11 +34,11 @@ module right_shift_2 (i_arg_A, i_arg_B, o_newA, o_status);
             o_status[0] = 1; // Set status bit 0 to 1 if i_argB is negative
 
         // Check if all bits in o_newA are ones
-        if (o_newA === (1 << m) - 1)
+        if (o_newA === (1 << K) - 1)
             o_status[2] = 1; // Set status bit 2 to 1 if all bits in o_newA are ones
 
         // Count the number of '1' bits in o_newA
-        for (a = 0; a < m; a++)
+        for (a = 0; a < K; a++)
         begin
             if (o_newA[a] == 1)
                 x = x + 1;
