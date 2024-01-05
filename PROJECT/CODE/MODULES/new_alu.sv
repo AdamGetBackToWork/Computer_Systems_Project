@@ -13,7 +13,7 @@
 `include "./../SUBMODULES/KACPER/division.sv"
 `include "./../SUBMODULES/KACPER/right_shift_2.sv"
 
-module new_alu(i_op, i_arg_A, i_arg_B, i_clk, i_reset, o_result, o_status);
+module new_alu(i_op, i_arg_A, i_arg_B, i_clk, i_reset, o_result, o_status, o_op_rdy, o_alu_error);
 
 	/*Dodałem od siebie parametr K, ponieważ w instrukcji nie ma zdefiniowanego romzmiaru wyjścia.
 	  Rozmiar wyjścia domyślnie przyjąłem jako taki sam jak rozmiar wejścia, czyli 8 bitów*/
@@ -31,8 +31,14 @@ module new_alu(i_op, i_arg_A, i_arg_B, i_clk, i_reset, o_result, o_status);
 	output logic [K-1:0] o_result;
 	output logic [3:0] o_status;
 	
+	/*Deklaracja portów dla APB*/
+	output logic o_op_rdy;
+	output logic o_alu_error;
+	
 	logic [K-1:0] finale_cache_result;
 	logic [3:0] finale_cache_status;
+	logic cache_op_ready;
+	logic cache_alu_error;
 	
 	/*Szyny do łączenia poszczególnych modułów (M od "Maciek") status + result*/
 	
@@ -73,6 +79,8 @@ module new_alu(i_op, i_arg_A, i_arg_B, i_clk, i_reset, o_result, o_status);
 	
 		finale_cache_status = 4'b0;
 		finale_cache_result = 8'b0;
+		cache_op_ready = 1'b0;
+		cache_alu_error = 1'b0;
 		
 		case(i_op[3:2])
 		
@@ -184,6 +192,15 @@ module new_alu(i_op, i_arg_A, i_arg_B, i_clk, i_reset, o_result, o_status);
 			finale_cache_status = 4'b0;
 			finale_cache_result = 8'b0;
 		end
+		
+		/*Jeżeli w ALU wystąpił błąd, musimy odpowiednio ustawić wyjście*/
+		if(finale_cache_status[0] == 1) begin
+			cache_op_ready = 1'b0;
+			cache_alu_error = 1'b1;
+		end else begin
+			cache_op_ready = 1'b1;
+			cache_alu_error = 1'b0;
+		end
 	
 	end
 	
@@ -192,8 +209,9 @@ module new_alu(i_op, i_arg_A, i_arg_B, i_clk, i_reset, o_result, o_status);
     always_ff @(posedge i_clk) begin
     	o_result <= finale_cache_result;
     	o_status <= finale_cache_status;
+    	o_op_rdy <= cache_op_ready;
+		o_alu_error <= cache_alu_error;
     end
-
 
 endmodule
 
