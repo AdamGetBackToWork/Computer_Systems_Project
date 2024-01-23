@@ -17,7 +17,7 @@ module new_alu(i_op, i_arg_A, i_arg_B, i_clk, i_reset, o_result, o_status, o_op_
 
 	/*Dodałem od siebie parametr K, ponieważ w instrukcji nie ma zdefiniowanego romzmiaru wyjścia.
 	  Rozmiar wyjścia domyślnie przyjąłem jako taki sam jak rozmiar wejścia, czyli 8 bitów*/
-
+	
 	parameter N = 4;
 	parameter M = 8;
 	parameter K = 8;
