@@ -160,92 +160,92 @@ module zm_to_u2(i_arg_A, i_arg_B, cache_status, cache_result);
 	
 endmodule
 
-module absolute (i_arg_B, o_newB, o_status);
+module absolute (i_arg_B, cache_result, cache_status);
     parameter M = 8;
     parameter K = 8;
     input logic signed [M-1:0] i_arg_B;
-    output logic [K-1:0] o_newB;
-    output logic [3:0] o_status;
+    output logic [K-1:0] cache_result;
+    output logic [3:0] cache_status;
     integer a;
     integer x;
 
     always_comb
     begin
         // Initialize outputs and variables
-        o_newB = '0;
+        cache_result = '0;
         x = 0;
         a = 0;
-        o_status = '0;
+        cache_status = '0;
          
         begin
             if (i_arg_B >= 0) 
                 begin
-                    o_newB = i_arg_B;
+                    cache_result = i_arg_B;
                 end 
             else 
                 begin
-                    o_newB = -i_arg_B;
+                    cache_result = -i_arg_B;
                 end
         end
         
         // Check if all bits in o_newB are ones
-        if (o_newB === (1 << M) - 1)
-            o_status[2] = 1; // Set status bit 2 to 1 if all bits in o_newB are ones
+        if (cache_result === (1 << M) - 1)
+            cache_status[2] = 1; // Set status bit 2 to 1 if all bits in o_newB are ones
 
         // Count the number of '1' bits in o_newB
         for (a = 0; a < M; a++)
         begin
-            if (o_newB[a] == 1)
+            if (cache_result[a] == 1)
                 x = x + 1;
         end
 
         // Check if the number of '1' bits is even and o_newB is not '0'
-        if (x % 2 == 0 && o_newB != 0)
-            o_status[1] = 1; // Set status bit 1 to 1 if conditions are met
+        if (x % 2 == 0 && cache_result != 0)
+            cache_status[1] = 1; // Set status bit 1 to 1 if conditions are met
             
         // Check if the number couldn't be converted properly
         if (i_arg_B < -(2**(M-1)) || i_arg_B >= 2**(M-1)) begin
-            o_status[0] = 1; // Set status bit 0 to 1 if the number couldn't be converted properly
+            cache_status[0] = 1; // Set status bit 0 to 1 if the number couldn't be converted properly
         end
     end
 endmodule
 
-module comparison_1 (i_arg_A, i_arg_B, o_eqA, o_status);
+module comparison_1 (i_arg_A, i_arg_B, cache_result, cache_status);
     parameter M = 8;
     parameter K = 8;
     input logic signed [M-1:0] i_arg_A;
     input logic signed [M-1:0] i_arg_B;
-    output logic [K-1:0] o_eqA;
-    output logic [3:0] o_status;
+    output logic [K-1:0] cache_result;
+    output logic [3:0] cache_status;
     integer a;
     integer x;
 
     always_comb 
     begin
 
-        o_status = '0;
-        o_eqA = '0;
+        cache_status = '0;
+        cache_result = '0;
         a = 0;
         x = 0;
 
         if ((~i_arg_A) >= i_arg_B) begin
-            o_eqA = 1;
+            cache_result = 1;
 
-            if (((i_arg_A >>> (M-1)) == 1) && ((i_arg_B >>> (M-1)) == 1) && ((o_eqA >>> (K-1)) == 0) ||
-            ((i_arg_A >>> (M-1)) == 0) && ((i_arg_B >>> (M-1)) == 0) && ((o_eqA >>> (K-1)) == 1))
+            if (((i_arg_A >>> (M-1)) == 1) && ((i_arg_B >>> (M-1)) == 1) && ((cache_result >>> (K-1)) == 0) ||
+            ((i_arg_A >>> (M-1)) == 0) && ((i_arg_B >>> (M-1)) == 0) && ((cache_result >>> (K-1)) == 1))
             begin
-                o_status[3] = 1;
+                cache_status[3] = 1;
             end
         end
     end
 endmodule
 
-module division (i_arg_A, i_arg_B, o_div, o_status);
+module division (i_arg_A, i_arg_B, cache_result, cache_status);
     parameter M = 8;
     parameter K = 8;
     input logic signed [M-1:0] i_arg_A, i_arg_B;
-    output logic [K-1:0] o_div;
-    output logic [3:0] o_status;
+    output logic [K-1:0] cache_result;
+    output logic [3:0] cache_status;
     logic signed [K-1:0] s_divid;
     integer x;
     integer a;
@@ -253,10 +253,10 @@ module division (i_arg_A, i_arg_B, o_div, o_status);
     always_comb
     begin
         // Initialize outputs and variables
-        o_status = '0;
+        cache_status = '0;
         x = 0;
         a = 0;
-        o_div = '0;
+        cache_result = '0;
 
          // If i_arg_B = 0, display an error
         if (i_arg_B !== 0) 
@@ -265,39 +265,39 @@ module division (i_arg_A, i_arg_B, o_div, o_status);
             // Check if o_div is within the valid range
             if (s_divid <= K-1) 
             begin
-                o_div = s_divid;
+                cache_result = s_divid;
             end 
             else
-                o_status[3] = 1; // Set status bit 3 to 1 if o_div is out of range
+                cache_status[3] = 1; // Set status bit 3 to 1 if o_div is out of range
         end 
         else
-            o_status[0] = 1;
+            cache_status[0] = 1;
 
         // Check if all bits in o_div are ones
-        if (o_div === (1 << K) - 1)
-            o_status[2] = 1; // Set status bit 2 to 1 if all bits in o_div are ones
+        if (cache_result === (1 << K) - 1)
+            cache_status[2] = 1; // Set status bit 2 to 1 if all bits in o_div are ones
 
         // Count the number of '1' bits in o_div
         for (a = 0; a < M; a++)
         begin
-            if (o_div[a] == 1)
+            if (cache_result[a] == 1)
                 x = x + 1;
         end
 
         // Check if the number of '1' bits is even and o_div is not '0'
-        if (x % 2 == 0 && o_div != 0)
-            o_status[1] = 1; // Set status bit 1 to 1 if conditions are met
+        if (x % 2 == 0 && cache_result != 0)
+            cache_status[1] = 1; // Set status bit 1 to 1 if conditions are met
         
     end
     
 endmodule
 
-module right_shift_2 (i_arg_A, i_arg_B, o_newA, o_status);
+module right_shift_2 (i_arg_A, i_arg_B, cache_result, cache_status);
     parameter M = 8;
     parameter K = 8;
     input logic signed [M-1:0] i_arg_A, i_arg_B;
-    output logic [K-1:0] o_newA;
-    output logic [3:0] o_status;
+    output logic [K-1:0] cache_result;
+    output logic [3:0] cache_status;
     logic [M-1:0] s_s;
     integer x;
     integer a;
@@ -305,10 +305,10 @@ module right_shift_2 (i_arg_A, i_arg_B, o_newA, o_status);
     always_comb
     begin
         // Initialize outputs and variables
-        o_newA = '0;
+        cache_result = '0;
         x = 0;
         a = 0;
-        o_status = '0;
+        cache_status = '0;
 
         // Check if i_argB is non-negative
         if (i_arg_B >= 0)
@@ -319,28 +319,28 @@ module right_shift_2 (i_arg_A, i_arg_B, o_newA, o_status);
             // Check if o_newA is within the valid range
             if (s_s <= K-1)
             begin
-                o_newA = s_s;
+                cache_result = s_s;
             end
             else
-                o_status[3] = 1; // Set status bit 3 to 1 if o_nawA is out of range
+                cache_status[3] = 1; // Set status bit 3 to 1 if o_nawA is out of range
         end
         else
-            o_status[0] = 1; // Set status bit 0 to 1 if i_argB is negative
+            cache_status[0] = 1; // Set status bit 0 to 1 if i_argB is negative
 
         // Check if all bits in o_newA are ones
-        if (o_newA === (1 << K) - 1)
-            o_status[2] = 1; // Set status bit 2 to 1 if all bits in o_newA are ones
+        if (cache_result === (1 << K) - 1)
+            cache_status[2] = 1; // Set status bit 2 to 1 if all bits in o_newA are ones
 
         // Count the number of '1' bits in o_newA
         for (a = 0; a < K; a++)
         begin
-            if (o_newA[a] == 1)
+            if (cache_result[a] == 1)
                 x = x + 1;
         end
 
         // Check if the number of '1' bits is even and o_newA is not '0'
-        if (x % 2 == 0 && o_newA != 0)
-            o_status[1] = 1; // Set status bit 1 to 1 if conditions are met
+        if (x % 2 == 0 && cache_result != 0)
+            cache_status[1] = 1; // Set status bit 1 to 1 if conditions are met
     end
 endmodule
 
@@ -631,10 +631,10 @@ module new_alu(i_op, i_arg_A, i_arg_B, i_clk, i_reset, o_result, o_status, o_op_
 	add_bit #(.M(M), .K(K)) mod_add_bit(.i_arg_A(i_arg_A), .i_arg_B(i_arg_B), .cache_status(A_add_bit_status), .cache_result(A_add_bit_result));	
 	u2_to_zm #(.M(M), .K(K)) mod_u2_to_zm(.i_arg_A(i_arg_A), .i_arg_B(i_arg_B), .cache_status(A_u2_to_zm_status), .cache_result(A_u2_to_zm_result));
 
-	absolute #(.M(M), .K(K)) mod_absolute(.i_arg_B(i_arg_B), .o_status(K_absolute_status), .o_newB(K_absolute_result));
-	comparison_1 #(.M(M), .K(K)) mod_comparison_1(.i_arg_A(i_arg_A), .i_arg_B(i_arg_B), .o_status(K_comparison_1_status), .o_eqA(K_comparison_1_result));	
-	division #(.M(M), .K(K)) mod_division(.i_arg_A(i_arg_A), .i_arg_B(i_arg_B), .o_status(K_division_status), .o_div(K_division_result));	
-	right_shift_2 #(.M(M), .K(K)) mod_right_shift_2(.i_arg_A(i_arg_A), .i_arg_B(i_arg_B), .o_status(K_right_shift_2_status), .o_newA(K_right_shift_2_result));
+	absolute #(.M(M), .K(K)) mod_absolute(.i_arg_B(i_arg_B), .cache_status(K_absolute_status), .cache_result(K_absolute_result));
+	comparison_1 #(.M(M), .K(K)) mod_comparison_1(.i_arg_A(i_arg_A), .i_arg_B(i_arg_B), .cache_status(K_comparison_1_status), .cache_result(K_comparison_1_result));	
+	division #(.M(M), .K(K)) mod_division(.i_arg_A(i_arg_A), .i_arg_B(i_arg_B), .cache_status(K_division_status), .cache_result(K_division_result));	
+	right_shift_2 #(.M(M), .K(K)) mod_right_shift_2(.i_arg_A(i_arg_A), .i_arg_B(i_arg_B), .cache_status(K_right_shift_2_status), .cache_result(K_right_shift_2_result));
 	
 	
 	/*Część kombinacyjna układu*/

@@ -139,7 +139,7 @@ module testbench;
         s_clk = 1;
         #1
         
-        /*10.) Testowanie operacji Y = ~A >= B*/
+        /*10.) Testowanie operacji Y = A >= B*/
         
         s_op = 4'b1001;
         
@@ -150,7 +150,7 @@ module testbench;
         s_clk = 1;
         #1
         
-        /*11.) Testowanie operacji Y = ~A / B*/
+        /*11.) Testowanie operacji Y = A / B*/
         
         s_op = 4'b1010;
         
@@ -169,7 +169,7 @@ module testbench;
         s_arg_B = 8'b01010101;
         #1
         s_clk = 1;
-        #1
+        #3
 
         $finish;
 	end

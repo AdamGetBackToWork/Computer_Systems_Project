@@ -1,5 +1,5 @@
 $date
-	Wed Jan 24 20:29:12 2024
+	Wed Jan 24 22:47:45 2024
 $end
 $version
 	Icarus Verilog
@@ -63,8 +63,8 @@ $scope module mod_absolute $end
 $var wire 8 Q i_arg_B [7:0] $end
 $var parameter 32 R K $end
 $var parameter 32 S M $end
-$var reg 8 T o_newB [7:0] $end
-$var reg 4 U o_status [3:0] $end
+$var reg 8 T cache_result [7:0] $end
+$var reg 4 U cache_status [3:0] $end
 $var integer 32 V a [31:0] $end
 $var integer 32 W x [31:0] $end
 $upscope $end
@@ -94,8 +94,8 @@ $var wire 8 i i_arg_A [7:0] $end
 $var wire 8 j i_arg_B [7:0] $end
 $var parameter 32 k K $end
 $var parameter 32 l M $end
-$var reg 8 m o_eqA [7:0] $end
-$var reg 4 n o_status [3:0] $end
+$var reg 8 m cache_result [7:0] $end
+$var reg 4 n cache_status [3:0] $end
 $var integer 32 o a [31:0] $end
 $var integer 32 p x [31:0] $end
 $upscope $end
@@ -114,8 +114,8 @@ $var wire 8 y i_arg_A [7:0] $end
 $var wire 8 z i_arg_B [7:0] $end
 $var parameter 32 { K $end
 $var parameter 32 | M $end
-$var reg 8 } o_div [7:0] $end
-$var reg 4 ~ o_status [3:0] $end
+$var reg 8 } cache_result [7:0] $end
+$var reg 4 ~ cache_status [3:0] $end
 $var reg 8 !" s_divid [7:0] $end
 $var integer 32 "" a [31:0] $end
 $var integer 32 #" x [31:0] $end
@@ -141,8 +141,8 @@ $var wire 8 0" i_arg_A [7:0] $end
 $var wire 8 1" i_arg_B [7:0] $end
 $var parameter 32 2" K $end
 $var parameter 32 3" M $end
-$var reg 8 4" o_newA [7:0] $end
-$var reg 4 5" o_status [3:0] $end
+$var reg 8 4" cache_result [7:0] $end
+$var reg 4 5" cache_status [3:0] $end
 $var reg 8 6" s_s [7:0] $end
 $var integer 32 7" a [31:0] $end
 $var integer 32 8" x [31:0] $end
@@ -1084,9 +1084,6 @@ b11111000 "
 b11111000 O
 1(
 #22
-1J
-b0 K
-b10 L
 b10 <
 b10 U
 b1000 V
@@ -1130,6 +1127,9 @@ bx 1
 bx ."
 b1000 0
 b1000 /"
+1J
+b0 K
+b10 L
 b1010101 '
 b1010101 ,
 b1010101 Q
@@ -1145,10 +1145,12 @@ b1010101 :"
 b1010101 D"
 b1010101 J"
 0(
+b1011 )
+b1011 -
 #23
 b10 !
 b10 P
 b0 "
 b0 O
 1(
-#24
+#26
