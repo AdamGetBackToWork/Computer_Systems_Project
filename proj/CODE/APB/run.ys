@@ -1,0 +1,23 @@
+    # reading the file
+    read_verilog -sv APB.sv
+    
+    # copying read file into a temp one
+    copy APB APBrtl
+    
+    # adjusting hierarchy
+    hierarchy -top APBrtl
+    
+    # synthesize
+    synth
+    
+    # chhosing gates
+    abc -g AND,OR,XOR
+    
+    # optymalization
+    opt_clean
+    
+    # saving the file
+    write_verilog -noattr APBrtl.sv
+    
+    # printing stats
+    stat -tech cmos
