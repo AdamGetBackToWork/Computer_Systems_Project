@@ -20,4 +20,4 @@
     write_verilog -noattr APBrtl.sv
     
     # printing stats
-    stat -tech cmos
+    stat

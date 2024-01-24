@@ -1,6 +1,5 @@
-`ifndef APB_MASTER_DEF
-
-`define APB_MASTER_DEF
+`ifndef APB_DEFINES
+`define APB_DEFINES
 
 `define INACTIVE    2'b00
 `define SETUP   	2'b01

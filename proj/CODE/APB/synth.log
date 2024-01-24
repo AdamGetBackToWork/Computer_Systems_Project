@@ -725,3 +725,24 @@ Removed 0 unused cells and 86 unused wires.
 Dumping module `\APBrtl'.
 
 7. Printing statistics.
+
+=== APBrtl ===
+
+   Number of wires:                 74
+   Number of wire bits:             98
+   Number of public wires:          21
+   Number of public wire bits:      38
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 81
+     $_AND_                         36
+     $_DFF_P_                        3
+     $_DLATCH_P_                    18
+     $_NOT_                         13
+     $_OR_                          11
+
+End of script. Logfile hash: e6d4f79099
+CPU: user 0.33s system 0.02s, MEM: 16.98 MB total, 11.12 MB resident
+Yosys 0.9 (git sha1 1979e0b)
+Time spent: 21% 16x opt_clean (0 sec), 17% 13x opt_expr (0 sec), ...
