@@ -110,7 +110,7 @@ module testbench;
         
         s_clk = 0;
         s_arg_A = 8'b00000011;
-        s_arg_B = 8'b00000010; check
+        s_arg_B = 8'b00000010; // check
         #1
         s_clk = 1;
         #1
