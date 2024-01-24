@@ -31,14 +31,31 @@ output logic o_transfer_done;
 
 reg [1:0] curr_state;
 reg [1:0] next_state;
-reg fb_check = 1;
-reg fb = 0;
+reg fb_check;
+reg fb;
+
+    
 
 always @(curr_state or PRESET or PREADY 
 		 or PRDATA or i_data or i_data_ready 
 		 or i_alu_error or i_protocol_sel 
 		 or i_data_check) 
 	begin
+    
+	PSEL0 = 0;
+    PSEL1 = 0;
+    PSEL2 = 0;
+    PSEL3 = 0;
+    PENABLE = 0;
+    PWRITE = 0;
+    PWDATA = 0;
+    o_waiting = 0;
+    o_transfer_done = 0;
+    fb_check = 1;
+	fb = 0;
+    //i_data_check = 0;
+    //i_protocol_sel = 0;
+
 
     case (curr_state)
     

@@ -27,7 +27,7 @@
 1. Executing Verilog-2005 frontend: APB.sv
 Parsing SystemVerilog input from `APB.sv' to AST representation.
 Generating RTLIL representation for module `\APB'.
-Note: Assuming pure combinatorial block at APB.sv:37 in
+Note: Assuming pure combinatorial block at APB.sv:39 in
 compliance with IEC 62142(E):2005 / IEEE Std. 1364.1(E):2002. Recommending
 use of @* instead of @(...) for better match of synthesis and simulation.
 Successfully finished Verilog frontend.
@@ -59,21 +59,17 @@ Removed 0 unused modules.
 Cleaned up 0 empty switches.
 
 3.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
-Removed 1 dead cases from process $proc$APB.sv:37$1 in module APBrtl.
-Marked 9 switch rules as full_case in process $proc$APB.sv:37$1 in module APBrtl.
-Marked 1 switch rules as full_case in process $proc$APB.sv:139$17 in module APBrtl.
+Removed 1 dead cases from process $proc$APB.sv:39$1 in module APBrtl.
+Marked 9 switch rules as full_case in process $proc$APB.sv:39$1 in module APBrtl.
+Marked 1 switch rules as full_case in process $proc$APB.sv:156$17 in module APBrtl.
 Removed a total of 1 dead cases.
 
 3.2.3. Executing PROC_INIT pass (extract init attributes).
-Found init rule in `\APBrtl.$proc$APB.sv:34$19'.
-  Set init value: \fb_check = 1'1
-Found init rule in `\APBrtl.$proc$APB.sv:35$20'.
-  Set init value: \fb = 1'0
 
 3.2.4. Executing PROC_ARST pass (detect async resets in processes).
 
 3.2.5. Executing PROC_MUX pass (convert decision trees to multiplexers).
-Creating decoders for process `\APBrtl.$proc$APB.sv:37$1'.
+Creating decoders for process `\APBrtl.$proc$APB.sv:39$1'.
      1/39: $4\next_state[1:0]
      2/39: $3\next_state[1:0]
      3/39: $2\PSEL3[0:0]
@@ -113,49 +109,43 @@ Creating decoders for process `\APBrtl.$proc$APB.sv:37$1'.
     37/39: $0\PSEL2[0:0]
     38/39: $0\PSEL1[0:0]
     39/39: $0\PSEL0[0:0]
-Creating decoders for process `\APBrtl.$proc$APB.sv:139$17'.
+Creating decoders for process `\APBrtl.$proc$APB.sv:156$17'.
      1/2: $1\curr_state[1:0]
      2/2: $0\curr_state[1:0]
-Creating decoders for process `\APBrtl.$proc$APB.sv:34$19'.
-     1/1: $3\fb_check[0:0]
-Creating decoders for process `\APBrtl.$proc$APB.sv:35$20'.
-     1/1: $2\fb[0:0]
 
 3.2.6. Executing PROC_DLATCH pass (convert process syncs to latches).
-No latch inferred for signal `\APBrtl.\next_state' from process `\APBrtl.$proc$APB.sv:37$1'.
-Latch inferred for signal `\APBrtl.\PSEL0' from process `\APBrtl.$proc$APB.sv:37$1': $auto$proc_dlatch.cc:409:proc_dlatch$229
-Latch inferred for signal `\APBrtl.\PSEL1' from process `\APBrtl.$proc$APB.sv:37$1': $auto$proc_dlatch.cc:409:proc_dlatch$246
-Latch inferred for signal `\APBrtl.\PSEL2' from process `\APBrtl.$proc$APB.sv:37$1': $auto$proc_dlatch.cc:409:proc_dlatch$263
-Latch inferred for signal `\APBrtl.\PSEL3' from process `\APBrtl.$proc$APB.sv:37$1': $auto$proc_dlatch.cc:409:proc_dlatch$280
-Latch inferred for signal `\APBrtl.\PENABLE' from process `\APBrtl.$proc$APB.sv:37$1': $auto$proc_dlatch.cc:409:proc_dlatch$303
-Latch inferred for signal `\APBrtl.\PWRITE' from process `\APBrtl.$proc$APB.sv:37$1': $auto$proc_dlatch.cc:409:proc_dlatch$320
-Latch inferred for signal `\APBrtl.\PWDATA' from process `\APBrtl.$proc$APB.sv:37$1': $auto$proc_dlatch.cc:409:proc_dlatch$337
-Latch inferred for signal `\APBrtl.\o_waiting' from process `\APBrtl.$proc$APB.sv:37$1': $auto$proc_dlatch.cc:409:proc_dlatch$424
-Latch inferred for signal `\APBrtl.\o_transfer_done' from process `\APBrtl.$proc$APB.sv:37$1': $auto$proc_dlatch.cc:409:proc_dlatch$441
-Latch inferred for signal `\APBrtl.\fb_check' from process `\APBrtl.$proc$APB.sv:37$1': $auto$proc_dlatch.cc:409:proc_dlatch$452
-Latch inferred for signal `\APBrtl.\fb' from process `\APBrtl.$proc$APB.sv:37$1': $auto$proc_dlatch.cc:409:proc_dlatch$463
+No latch inferred for signal `\APBrtl.\PSEL0' from process `\APBrtl.$proc$APB.sv:39$1'.
+No latch inferred for signal `\APBrtl.\PSEL1' from process `\APBrtl.$proc$APB.sv:39$1'.
+No latch inferred for signal `\APBrtl.\PSEL2' from process `\APBrtl.$proc$APB.sv:39$1'.
+No latch inferred for signal `\APBrtl.\PSEL3' from process `\APBrtl.$proc$APB.sv:39$1'.
+No latch inferred for signal `\APBrtl.\PENABLE' from process `\APBrtl.$proc$APB.sv:39$1'.
+No latch inferred for signal `\APBrtl.\PWRITE' from process `\APBrtl.$proc$APB.sv:39$1'.
+No latch inferred for signal `\APBrtl.\PWDATA' from process `\APBrtl.$proc$APB.sv:39$1'.
+No latch inferred for signal `\APBrtl.\o_waiting' from process `\APBrtl.$proc$APB.sv:39$1'.
+No latch inferred for signal `\APBrtl.\o_transfer_done' from process `\APBrtl.$proc$APB.sv:39$1'.
+No latch inferred for signal `\APBrtl.\next_state' from process `\APBrtl.$proc$APB.sv:39$1'.
+No latch inferred for signal `\APBrtl.\fb_check' from process `\APBrtl.$proc$APB.sv:39$1'.
+No latch inferred for signal `\APBrtl.\fb' from process `\APBrtl.$proc$APB.sv:39$1'.
 
 3.2.7. Executing PROC_DFF pass (convert process syncs to FFs).
-Creating register for signal `\APBrtl.\curr_state' using process `\APBrtl.$proc$APB.sv:139$17'.
-  created $dff cell `$procdff$464' with positive edge clock.
+Creating register for signal `\APBrtl.\curr_state' using process `\APBrtl.$proc$APB.sv:156$17'.
+  created $dff cell `$procdff$203' with positive edge clock.
 
 3.2.8. Executing PROC_CLEAN pass (remove empty switches from decision trees).
-Found and cleaned up 9 empty switches in `\APBrtl.$proc$APB.sv:37$1'.
-Removing empty process `APBrtl.$proc$APB.sv:37$1'.
-Found and cleaned up 1 empty switch in `\APBrtl.$proc$APB.sv:139$17'.
-Removing empty process `APBrtl.$proc$APB.sv:139$17'.
-Removing empty process `APBrtl.$proc$APB.sv:34$19'.
-Removing empty process `APBrtl.$proc$APB.sv:35$20'.
+Found and cleaned up 9 empty switches in `\APBrtl.$proc$APB.sv:39$1'.
+Removing empty process `APBrtl.$proc$APB.sv:39$1'.
+Found and cleaned up 1 empty switch in `\APBrtl.$proc$APB.sv:156$17'.
+Removing empty process `APBrtl.$proc$APB.sv:156$17'.
 Cleaned up 10 empty switches.
 
 3.3. Executing OPT_EXPR pass (perform const folding).
 Optimizing module APBrtl.
-<suppressed ~109 debug messages>
+<suppressed ~21 debug messages>
 
 3.4. Executing OPT_CLEAN pass (remove unused cells and wires).
 Finding unused cells or wires in module \APBrtl..
-Removed 13 unused cells and 158 unused wires.
-<suppressed ~14 debug messages>
+Removed 9 unused cells and 80 unused wires.
+<suppressed ~12 debug messages>
 
 3.5. Executing CHECK pass (checking for obvious problems).
 checking module APBrtl..
@@ -168,40 +158,49 @@ Optimizing module APBrtl.
 
 3.6.2. Executing OPT_MERGE pass (detect identical cells).
 Finding identical cells in module `\APBrtl'.
-<suppressed ~216 debug messages>
-Removed a total of 72 cells.
+<suppressed ~114 debug messages>
+Removed a total of 38 cells.
 
 3.6.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
 Running muxtree optimizer on module \APBrtl..
   Creating internal representation of mux trees.
   Evaluating internal representation of mux trees.
   Analyzing evaluation results.
-    dead port 1/2 on $mux $procmux$26.
-    dead port 2/2 on $mux $procmux$28.
-    dead port 2/2 on $mux $procmux$34.
-    dead port 2/2 on $mux $procmux$99.
-Removed 4 multiplexer ports.
-<suppressed ~12 debug messages>
+    dead port 2/2 on $mux $procmux$106.
+    dead port 1/2 on $mux $procmux$109.
+    dead port 1/2 on $mux $procmux$24.
+    dead port 2/2 on $mux $procmux$26.
+    dead port 2/2 on $mux $procmux$111.
+    dead port 2/2 on $mux $procmux$32.
+    dead port 2/2 on $mux $procmux$41.
+    dead port 1/2 on $mux $procmux$119.
+    dead port 2/2 on $mux $procmux$121.
+    dead port 1/2 on $mux $procmux$130.
+    dead port 2/2 on $mux $procmux$50.
+    dead port 2/2 on $mux $procmux$132.
+    dead port 2/2 on $mux $procmux$140.
+    dead port 2/2 on $mux $procmux$59.
+    dead port 2/2 on $mux $procmux$68.
+    dead port 2/2 on $mux $procmux$82.
+    dead port 2/2 on $mux $procmux$89.
+    dead port 2/2 on $mux $procmux$97.
+Removed 18 multiplexer ports.
+<suppressed ~11 debug messages>
 
 3.6.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
   Optimizing cells in module \APBrtl.
-    New input vector for $reduce_or cell $auto$proc_dlatch.cc:247:make_hold$420: { $auto$rtlil.cc:1862:And$349 $auto$rtlil.cc:1862:And$419 }
-    New ctrl vector for $pmux cell $procmux$160: $procmux$156_CMP
-    New ctrl vector for $pmux cell $procmux$165: $procmux$156_CMP
-    New ctrl vector for $pmux cell $procmux$170: $procmux$156_CMP
-    New ctrl vector for $pmux cell $procmux$175: $procmux$156_CMP
-    New ctrl vector for $pmux cell $procmux$179: $procmux$155_CMP
-    New ctrl vector for $pmux cell $procmux$185: $procmux$156_CMP
-    New ctrl vector for $pmux cell $procmux$190: $procmux$156_CMP
-    New ctrl vector for $pmux cell $procmux$195: $procmux$156_CMP
-    New ctrl vector for $pmux cell $procmux$200: $procmux$156_CMP
-    New ctrl vector for $pmux cell $procmux$38: $procmux$39_CMP
-    New ctrl vector for $pmux cell $procmux$47: $procmux$40_CMP
-    New ctrl vector for $pmux cell $procmux$56: $procmux$41_CMP
-    New ctrl vector for $pmux cell $procmux$65: $auto$opt_reduce.cc:132:opt_mux$466
-    New input vector for $reduce_or cell $auto$opt_reduce.cc:126:opt_mux$465: { $procmux$39_CMP $procmux$40_CMP $procmux$41_CMP }
+    New ctrl vector for $pmux cell $procmux$36: { $auto$opt_reduce.cc:132:opt_mux$205 $procmux$37_CMP }
+    New ctrl vector for $pmux cell $procmux$45: { $procmux$38_CMP $auto$opt_reduce.cc:132:opt_mux$207 }
+    New ctrl vector for $pmux cell $procmux$54: { $procmux$39_CMP $auto$opt_reduce.cc:132:opt_mux$209 }
+    New ctrl vector for $mux cell $procmux$138: { }
+    New ctrl vector for $pmux cell $procmux$63: { $procmux$40_CMP $auto$opt_reduce.cc:132:opt_mux$211 }
+    New ctrl vector for $mux cell $procmux$158: { }
+    New input vector for $reduce_or cell $auto$opt_reduce.cc:126:opt_mux$210: { $procmux$37_CMP $procmux$38_CMP $procmux$39_CMP }
+    New input vector for $reduce_or cell $auto$opt_reduce.cc:126:opt_mux$208: { $procmux$37_CMP $procmux$38_CMP $procmux$40_CMP }
+    New input vector for $reduce_or cell $auto$opt_reduce.cc:126:opt_mux$204: { $procmux$38_CMP $procmux$39_CMP $procmux$40_CMP }
+    New input vector for $reduce_or cell $auto$opt_reduce.cc:126:opt_mux$206: { $procmux$37_CMP $procmux$39_CMP $procmux$40_CMP }
   Optimizing cells in module \APBrtl.
-Performed a total of 15 changes.
+Performed a total of 10 changes.
 
 3.6.5. Executing OPT_MERGE pass (detect identical cells).
 Finding identical cells in module `\APBrtl'.
@@ -211,8 +210,8 @@ Removed a total of 0 cells.
 
 3.6.7. Executing OPT_CLEAN pass (remove unused cells and wires).
 Finding unused cells or wires in module \APBrtl..
-Removed 1 unused cells and 77 unused wires.
-<suppressed ~2 debug messages>
+Removed 0 unused cells and 57 unused wires.
+<suppressed ~1 debug messages>
 
 3.6.8. Executing OPT_EXPR pass (perform const folding).
 Optimizing module APBrtl.
@@ -225,7 +224,7 @@ Running muxtree optimizer on module \APBrtl..
   Evaluating internal representation of mux trees.
   Analyzing evaluation results.
 Removed 0 multiplexer ports.
-<suppressed ~12 debug messages>
+<suppressed ~10 debug messages>
 
 3.6.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
   Optimizing cells in module \APBrtl.
@@ -246,16 +245,17 @@ Optimizing module APBrtl.
 3.6.16. Finished OPT passes. (There is nothing left to do.)
 
 3.7. Executing WREDUCE pass (reducing word size of cells).
-Removed top 1 bits (of 2) from port B of cell APBrtl.$procmux$41_CMP0 ($eq).
-Removed top 1 bits (of 2) from mux cell APBrtl.$procmux$97 ($mux).
-Removed top 1 bits (of 2) from port B of cell APBrtl.$procmux$156_CMP0 ($eq).
+Removed top 1 bits (of 2) from port B of cell APBrtl.$procmux$39_CMP0 ($eq).
+Removed top 1 bits (of 2) from mux cell APBrtl.$procmux$95 ($mux).
+Removed cell APBrtl.$procmux$148 ($mux).
+Removed top 1 bits (of 2) from port B of cell APBrtl.$procmux$153_CMP0 ($eq).
 Removed top 1 bits (of 2) from wire APBrtl.$2\next_state[1:0].
 
 3.8. Executing PEEPOPT pass (run peephole optimizers).
 
 3.9. Executing OPT_CLEAN pass (remove unused cells and wires).
 Finding unused cells or wires in module \APBrtl..
-Removed 0 unused cells and 1 unused wires.
+Removed 0 unused cells and 2 unused wires.
 <suppressed ~1 debug messages>
 
 3.10. Executing TECHMAP pass (map to technology primitives).
@@ -290,7 +290,7 @@ Running muxtree optimizer on module \APBrtl..
   Evaluating internal representation of mux trees.
   Analyzing evaluation results.
 Removed 0 multiplexer ports.
-<suppressed ~12 debug messages>
+<suppressed ~10 debug messages>
 
 3.13.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
   Optimizing cells in module \APBrtl.
@@ -317,36 +317,36 @@ Found FSM state register APBrtl.curr_state.
 
 3.14.2. Executing FSM_EXTRACT pass (extracting FSM from design).
 Extracting FSM `\curr_state' from module `\APBrtl'.
-  found $dff cell for state register: $procdff$464
+  found $dff cell for state register: $procdff$203
   root of input selection tree: $0\curr_state[1:0]
   found reset state: 2'00 (guessed from mux tree)
   found ctrl input: \PRESET
   found state code: 2'00
-  found ctrl input: $auto$rtlil.cc:1832:Not$462
-  found ctrl input: $auto$rtlil.cc:1832:Not$451
-  found ctrl input: $procmux$100_CMP
-  found ctrl input: $and$APB.sv:128$16_Y
+  found ctrl input: $procmux$152_CMP
+  found ctrl input: $procmux$153_CMP
+  found ctrl input: $procmux$112_CMP
+  found ctrl input: $and$APB.sv:145$16_Y
   found ctrl input: \PREADY
   found state code: 2'10
   found state code: 2'01
-  found ctrl input: $and$APB.sv:67$12_Y
-  found ctrl output: $procmux$100_CMP
-  found ctrl output: $auto$rtlil.cc:1832:Not$462
-  found ctrl output: $auto$rtlil.cc:1832:Not$451
-  ctrl inputs: { $and$APB.sv:128$16_Y $and$APB.sv:67$12_Y \PREADY \PRESET }
-  ctrl outputs: { $auto$rtlil.cc:1832:Not$462 $auto$rtlil.cc:1832:Not$451 $procmux$100_CMP $0\curr_state[1:0] }
+  found ctrl input: $and$APB.sv:84$12_Y
+  found ctrl output: $procmux$112_CMP
+  found ctrl output: $procmux$152_CMP
+  found ctrl output: $procmux$153_CMP
+  ctrl inputs: { $and$APB.sv:145$16_Y $and$APB.sv:84$12_Y \PREADY \PRESET }
+  ctrl outputs: { $procmux$153_CMP $procmux$152_CMP $procmux$112_CMP $0\curr_state[1:0] }
   transition:       2'00 4'---0 ->       2'00 5'00100
   transition:       2'00 4'-0-1 ->       2'00 5'00100
   transition:       2'00 4'-1-1 ->       2'01 5'00101
-  transition:       2'10 4'---0 ->       2'00 5'10000
-  transition:       2'10 4'0-01 ->       2'10 5'10010
-  transition:       2'10 4'0-11 ->       2'00 5'10000
-  transition:       2'10 4'1--1 ->       2'01 5'10001
-  transition:       2'01 4'---0 ->       2'00 5'01000
-  transition:       2'01 4'---1 ->       2'10 5'01010
+  transition:       2'10 4'---0 ->       2'00 5'01000
+  transition:       2'10 4'0-01 ->       2'10 5'01010
+  transition:       2'10 4'0-11 ->       2'00 5'01000
+  transition:       2'10 4'1--1 ->       2'01 5'01001
+  transition:       2'01 4'---0 ->       2'00 5'10000
+  transition:       2'01 4'---1 ->       2'10 5'10010
 
 3.14.3. Executing FSM_OPT pass (simple optimizations of FSMs).
-Optimizing FSM `$fsm$\curr_state$468' from module `\APBrtl'.
+Optimizing FSM `$fsm$\curr_state$213' from module `\APBrtl'.
 
 3.14.4. Executing OPT_CLEAN pass (remove unused cells and wires).
 Finding unused cells or wires in module \APBrtl..
@@ -354,12 +354,12 @@ Removed 9 unused cells and 9 unused wires.
 <suppressed ~11 debug messages>
 
 3.14.5. Executing FSM_OPT pass (simple optimizations of FSMs).
-Optimizing FSM `$fsm$\curr_state$468' from module `\APBrtl'.
+Optimizing FSM `$fsm$\curr_state$213' from module `\APBrtl'.
   Removing unused output signal $0\curr_state[1:0] [0].
   Removing unused output signal $0\curr_state[1:0] [1].
 
 3.14.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
-Recoding FSM `$fsm$\curr_state$468' from module `\APBrtl' using `auto' encoding:
+Recoding FSM `$fsm$\curr_state$213' from module `\APBrtl' using `auto' encoding:
   mapping auto encoding to `one-hot` for this FSM.
   00 -> --1
   10 -> -1-
@@ -367,10 +367,10 @@ Recoding FSM `$fsm$\curr_state$468' from module `\APBrtl' using `auto' encoding:
 
 3.14.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
 
-FSM `$fsm$\curr_state$468' from module `\APBrtl':
+FSM `$fsm$\curr_state$213' from module `\APBrtl':
 -------------------------------------
 
-  Information on FSM $fsm$\curr_state$468 (\curr_state):
+  Information on FSM $fsm$\curr_state$213 (\curr_state):
 
   Number of input signals:    4
   Number of output signals:   3
@@ -379,13 +379,13 @@ FSM `$fsm$\curr_state$468' from module `\APBrtl':
   Input signals:
     0: \PRESET
     1: \PREADY
-    2: $and$APB.sv:67$12_Y
-    3: $and$APB.sv:128$16_Y
+    2: $and$APB.sv:84$12_Y
+    3: $and$APB.sv:145$16_Y
 
   Output signals:
-    0: $procmux$100_CMP
-    1: $auto$rtlil.cc:1832:Not$451
-    2: $auto$rtlil.cc:1832:Not$462
+    0: $procmux$112_CMP
+    1: $procmux$152_CMP
+    2: $procmux$153_CMP
 
   State encoding:
     0:      3'--1  <RESET STATE>
@@ -396,17 +396,17 @@ FSM `$fsm$\curr_state$468' from module `\APBrtl':
       0:     0 4'---0   ->     0 3'001
       1:     0 4'-0-1   ->     0 3'001
       2:     0 4'-1-1   ->     2 3'001
-      3:     1 4'---0   ->     0 3'100
-      4:     1 4'0-11   ->     0 3'100
-      5:     1 4'0-01   ->     1 3'100
-      6:     1 4'1--1   ->     2 3'100
-      7:     2 4'---0   ->     0 3'010
-      8:     2 4'---1   ->     1 3'010
+      3:     1 4'---0   ->     0 3'010
+      4:     1 4'0-11   ->     0 3'010
+      5:     1 4'0-01   ->     1 3'010
+      6:     1 4'1--1   ->     2 3'010
+      7:     2 4'---0   ->     0 3'100
+      8:     2 4'---1   ->     1 3'100
 
 -------------------------------------
 
 3.14.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
-Mapping FSM `$fsm$\curr_state$468' from module `\APBrtl'.
+Mapping FSM `$fsm$\curr_state$213' from module `\APBrtl'.
 
 3.15. Executing OPT pass (performing simple optimizations).
 
@@ -448,7 +448,7 @@ Finding unused cells or wires in module \APBrtl..
 
 3.18.1. Executing OPT_EXPR pass (perform const folding).
 Optimizing module APBrtl.
-<suppressed ~15 debug messages>
+<suppressed ~17 debug messages>
 
 3.18.2. Executing OPT_MERGE pass (detect identical cells).
 Finding identical cells in module `\APBrtl'.
@@ -458,8 +458,8 @@ Removed a total of 0 cells.
 
 3.18.4. Executing OPT_CLEAN pass (remove unused cells and wires).
 Finding unused cells or wires in module \APBrtl..
-Removed 0 unused cells and 5 unused wires.
-<suppressed ~1 debug messages>
+Removed 1 unused cells and 3 unused wires.
+<suppressed ~2 debug messages>
 
 3.18.5. Finished fast OPT passes.
 
@@ -480,13 +480,13 @@ Running muxtree optimizer on module \APBrtl..
   Evaluating internal representation of mux trees.
   Analyzing evaluation results.
 Removed 0 multiplexer ports.
-<suppressed ~4 debug messages>
+<suppressed ~2 debug messages>
 
 3.20.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
   Optimizing cells in module \APBrtl.
-    New input vector for $reduce_or cell $auto$opt_reduce.cc:126:opt_mux$465: { $2\PSEL1[0:0] $2\PSEL2[0:0] $2\PSEL3[0:0] }
-    New input vector for $reduce_or cell $auto$fsm_map.cc:144:implement_pattern_cache$496: { $auto$fsm_map.cc:118:implement_pattern_cache$490 $auto$fsm_map.cc:118:implement_pattern_cache$494 }
-    New input vector for $reduce_or cell $auto$fsm_map.cc:144:implement_pattern_cache$487: { $auto$fsm_map.cc:118:implement_pattern_cache$481 $auto$fsm_map.cc:118:implement_pattern_cache$485 $auto$fsm_map.cc:74:implement_pattern_cache$477 }
+    New input vector for $reduce_or cell $auto$fsm_map.cc:144:implement_pattern_cache$250: { $auto$fsm_map.cc:118:implement_pattern_cache$244 $auto$fsm_map.cc:118:implement_pattern_cache$248 }
+    New input vector for $reduce_or cell $auto$fsm_map.cc:144:implement_pattern_cache$241: { $auto$fsm_map.cc:118:implement_pattern_cache$235 $auto$fsm_map.cc:118:implement_pattern_cache$239 }
+    New input vector for $reduce_or cell $auto$fsm_map.cc:144:implement_pattern_cache$232: { $auto$fsm_map.cc:118:implement_pattern_cache$226 $auto$fsm_map.cc:74:implement_pattern_cache$222 $auto$fsm_map.cc:118:implement_pattern_cache$230 }
   Optimizing cells in module \APBrtl.
 Performed a total of 3 changes.
 
@@ -510,7 +510,7 @@ Running muxtree optimizer on module \APBrtl..
   Evaluating internal representation of mux trees.
   Analyzing evaluation results.
 Removed 0 multiplexer ports.
-<suppressed ~4 debug messages>
+<suppressed ~2 debug messages>
 
 3.20.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
   Optimizing cells in module \APBrtl.
@@ -557,22 +557,23 @@ Generating RTLIL representation for module `\_90_lut'.
 Successfully finished Verilog frontend.
 
 3.21.2. Continuing TECHMAP pass.
-Using extmapper simplemap for cells of type $and.
-Using extmapper simplemap for cells of type $or.
 Using extmapper simplemap for cells of type $eq.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $dff.
+Using extmapper simplemap for cells of type $or.
 Using extmapper simplemap for cells of type $not.
 Using extmapper simplemap for cells of type $reduce_or.
-Using extmapper simplemap for cells of type $dff.
+Using extmapper simplemap for cells of type $logic_not.
 Using extmapper simplemap for cells of type $mux.
-Using extmapper simplemap for cells of type $dlatch.
+Using template $paramod\_90_pmux\WIDTH=1\S_WIDTH=2 for cells of type $pmux.
 No more expansions possible.
-<suppressed ~80 debug messages>
+<suppressed ~63 debug messages>
 
 3.22. Executing OPT pass (performing simple optimizations).
 
 3.22.1. Executing OPT_EXPR pass (perform const folding).
 Optimizing module APBrtl.
-<suppressed ~6 debug messages>
+<suppressed ~7 debug messages>
 
 3.22.2. Executing OPT_MERGE pass (detect identical cells).
 Finding identical cells in module `\APBrtl'.
@@ -583,7 +584,7 @@ Removed a total of 6 cells.
 
 3.22.4. Executing OPT_CLEAN pass (remove unused cells and wires).
 Finding unused cells or wires in module \APBrtl..
-Removed 0 unused cells and 17 unused wires.
+Removed 0 unused cells and 28 unused wires.
 <suppressed ~1 debug messages>
 
 3.22.5. Finished fast OPT passes.
@@ -591,7 +592,7 @@ Removed 0 unused cells and 17 unused wires.
 3.23. Executing ABC pass (technology mapping using ABC).
 
 3.23.1. Extracting gate netlist of module `\APBrtl' to `<abc-temp-dir>/input.blif'..
-Extracted 100 gates and 123 wires to a netlist network with 21 inputs and 21 outputs.
+Extracted 84 gates and 104 wires to a netlist network with 18 inputs and 17 outputs.
 
 3.23.1.1. Executing ABC.
 Running ABC command: berkeley-abc -s -f <abc-temp-dir>/abc.script 2>&1
@@ -608,26 +609,24 @@ ABC: + write_blif <abc-temp-dir>/output.blif
 
 3.23.1.2. Re-integrating ABC results.
 ABC RESULTS:               AND cells:        1
-ABC RESULTS:            ANDNOT cells:       17
-ABC RESULTS:              AOI3 cells:        2
-ABC RESULTS:               MUX cells:        1
-ABC RESULTS:              NAND cells:        4
+ABC RESULTS:            ANDNOT cells:       16
+ABC RESULTS:              AOI3 cells:        1
+ABC RESULTS:              NAND cells:        3
 ABC RESULTS:               NOR cells:        1
-ABC RESULTS:               NOT cells:        7
+ABC RESULTS:               NOT cells:        4
 ABC RESULTS:              OAI3 cells:        4
 ABC RESULTS:              OAI4 cells:        2
-ABC RESULTS:                OR cells:       13
-ABC RESULTS:             ORNOT cells:       13
-ABC RESULTS:        internal signals:       81
-ABC RESULTS:           input signals:       21
-ABC RESULTS:          output signals:       21
+ABC RESULTS:                OR cells:        3
+ABC RESULTS:             ORNOT cells:       11
+ABC RESULTS:        internal signals:       69
+ABC RESULTS:           input signals:       18
+ABC RESULTS:          output signals:       17
 Removing temp directory.
 
 3.24. Executing OPT pass (performing simple optimizations).
 
 3.24.1. Executing OPT_EXPR pass (perform const folding).
 Optimizing module APBrtl.
-<suppressed ~1 debug messages>
 
 3.24.2. Executing OPT_MERGE pass (detect identical cells).
 Finding identical cells in module `\APBrtl'.
@@ -637,7 +636,7 @@ Removed a total of 0 cells.
 
 3.24.4. Executing OPT_CLEAN pass (remove unused cells and wires).
 Finding unused cells or wires in module \APBrtl..
-Removed 0 unused cells and 110 unused wires.
+Removed 0 unused cells and 92 unused wires.
 <suppressed ~1 debug messages>
 
 3.24.5. Finished fast OPT passes.
@@ -655,27 +654,25 @@ Removed 0 unused modules.
 
 === APBrtl ===
 
-   Number of wires:                 79
-   Number of wire bits:            103
-   Number of public wires:          21
-   Number of public wire bits:      38
+   Number of wires:                 51
+   Number of wire bits:             68
+   Number of public wires:          19
+   Number of public wire bits:      36
    Number of memories:               0
    Number of memory bits:            0
    Number of processes:              0
-   Number of cells:                 86
-     $_ANDNOT_                      17
+   Number of cells:                 49
+     $_ANDNOT_                      16
      $_AND_                          1
-     $_AOI3_                         2
+     $_AOI3_                         1
      $_DFF_P_                        3
-     $_DLATCH_P_                    18
-     $_MUX_                          1
-     $_NAND_                         4
+     $_NAND_                         3
      $_NOR_                          1
-     $_NOT_                          7
+     $_NOT_                          4
      $_OAI3_                         4
      $_OAI4_                         2
-     $_ORNOT_                       13
-     $_OR_                          13
+     $_ORNOT_                       11
+     $_OR_                           3
 
 3.27. Executing CHECK pass (checking for obvious problems).
 checking module APBrtl..
@@ -684,7 +681,7 @@ found and reported 0 problems.
 4. Executing ABC pass (technology mapping using ABC).
 
 4.1. Extracting gate netlist of module `\APBrtl' to `<abc-temp-dir>/input.blif'..
-Extracted 65 gates and 86 wires to a netlist network with 21 inputs and 21 outputs.
+Extracted 46 gates and 64 wires to a netlist network with 18 inputs and 17 outputs.
 
 4.1.1. Executing ABC.
 Running ABC command: berkeley-abc -s -f <abc-temp-dir>/abc.script 2>&1
@@ -708,17 +705,17 @@ ABC: + &put
 ABC: + write_blif <abc-temp-dir>/output.blif 
 
 4.1.2. Re-integrating ABC results.
-ABC RESULTS:               AND cells:       36
-ABC RESULTS:               NOT cells:       13
-ABC RESULTS:                OR cells:       11
-ABC RESULTS:        internal signals:       44
-ABC RESULTS:           input signals:       21
-ABC RESULTS:          output signals:       21
+ABC RESULTS:               AND cells:       27
+ABC RESULTS:               NOT cells:        7
+ABC RESULTS:                OR cells:        9
+ABC RESULTS:        internal signals:       29
+ABC RESULTS:           input signals:       18
+ABC RESULTS:          output signals:       17
 Removing temp directory.
 
 5. Executing OPT_CLEAN pass (remove unused cells and wires).
 Finding unused cells or wires in module \APBrtl..
-Removed 0 unused cells and 86 unused wires.
+Removed 0 unused cells and 64 unused wires.
 <suppressed ~1 debug messages>
 
 6. Executing Verilog backend.
@@ -728,21 +725,20 @@ Dumping module `\APBrtl'.
 
 === APBrtl ===
 
-   Number of wires:                 74
-   Number of wire bits:             98
-   Number of public wires:          21
-   Number of public wire bits:      38
+   Number of wires:                 48
+   Number of wire bits:             65
+   Number of public wires:          19
+   Number of public wire bits:      36
    Number of memories:               0
    Number of memory bits:            0
    Number of processes:              0
-   Number of cells:                 81
-     $_AND_                         36
+   Number of cells:                 46
+     $_AND_                         27
      $_DFF_P_                        3
-     $_DLATCH_P_                    18
-     $_NOT_                         13
-     $_OR_                          11
+     $_NOT_                          7
+     $_OR_                           9
 
-End of script. Logfile hash: e6d4f79099
-CPU: user 0.33s system 0.02s, MEM: 16.98 MB total, 11.12 MB resident
+End of script. Logfile hash: 32d13b0674
+CPU: user 0.20s system 0.02s, MEM: 16.84 MB total, 11.12 MB resident
 Yosys 0.9 (git sha1 1979e0b)
-Time spent: 21% 16x opt_clean (0 sec), 17% 13x opt_expr (0 sec), ...
+Time spent: 21% 16x opt_clean (0 sec), 18% 13x opt_expr (0 sec), ...

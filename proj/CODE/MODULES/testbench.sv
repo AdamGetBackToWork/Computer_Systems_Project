@@ -87,8 +87,8 @@ module testbench;
         s_op = 4'b0100;
         
         s_clk = 0;
-        s_arg_A = 8'b00000011;
-        s_arg_B = 8'b00000001;
+        s_arg_A = 8'b00000011; // =3
+        s_arg_B = 8'b00000001; // =1   output = 1 Check
         #1
         s_clk = 1;
         #1
@@ -98,8 +98,8 @@ module testbench;
         s_op = 4'b0101;
         
         s_clk = 0;
-        s_arg_A = 8'b00000110;
-        s_arg_B = 8'b00000011;
+        s_arg_A = 8'b00000110; // = 6
+        s_arg_B = 8'b00000011; // = 3  output = 0 check
         #1
         s_clk = 1;
         #1
@@ -110,7 +110,7 @@ module testbench;
         
         s_clk = 0;
         s_arg_A = 8'b00000011;
-        s_arg_B = 8'b00000010;
+        s_arg_B = 8'b00000010; check
         #1
         s_clk = 1;
         #1
@@ -163,7 +163,7 @@ module testbench;
         
         /*12.) Testowanie operacji Y = ~ABS(B)*/
         
-        s_op = 4'b1010;
+        s_op = 4'b1011;
         
         s_clk = 0;
         s_arg_B = 8'b01010101;
