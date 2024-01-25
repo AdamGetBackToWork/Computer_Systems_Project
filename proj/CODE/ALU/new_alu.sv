@@ -652,7 +652,7 @@ module new_alu(i_op, i_arg_A, i_arg_B, i_clk, i_reset, o_result, o_status, o_op_
 		
 		case(i_op[3:2])
 		
-			/*i_op[3:2] == 2'b00 odpowiada maćkowym operacjom*/
+			/*i_op[3:2] == 2'b00 odpowiada operacjom Maćka*/
 			2'b00 : begin
 				
 				case(i_op[1:0])
@@ -684,7 +684,8 @@ module new_alu(i_op, i_arg_A, i_arg_B, i_clk, i_reset, o_result, o_status, o_op_
 				endcase
 			
 			end
-		
+			
+			/*i_op[3:2] == 2'b01 odpowiada operacjom Adama*/
 			2'b01 : begin
 				
 				case(i_op[1:0])
@@ -711,6 +712,7 @@ module new_alu(i_op, i_arg_A, i_arg_B, i_clk, i_reset, o_result, o_status, o_op_
 				endcase
 			end
 			
+			/*i_op[3:2] == 2'b01 odpowiada operacjom Kacpra*/
 			2'b10 : begin
 				
 				case(i_op[1:0])
