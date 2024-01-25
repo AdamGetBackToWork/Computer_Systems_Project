@@ -3,7 +3,7 @@ Projekt opracowali: Adam Szajgin, Maciej Gojski, Kacper Kesy
 W ramach projektu stworzylismy system skladajacy sie z: 
 - ALU
 - APB master (bridge)
-- SPI UART (master)
+- UART (master)
 
 Oto schemat systemu:
 
@@ -12,10 +12,21 @@ Oto schemat systemu:
 </p>
 
 Nasza jednostka ALU wykonuje nastepujace operacje:
+- A >> ~B
+- A + B
+- A/B
+- ZM(A) => U2(A)
+----------------
 - A - 2*B
 - A < B
 - (A+B)[B] = 0
 - U2(A) => ZM(A)
+----------------
+- ~A >> B
+- ~A >= B
+- A/B
+- ABS(B)
+
 
 
 Kontroler APB posiada następujące linie ze standardu:

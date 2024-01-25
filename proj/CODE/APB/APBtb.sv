@@ -1,4 +1,4 @@
-`timescale 1ns/1ps
+`timescale 1ps/1ps
 
 module APBtb;
 
@@ -83,7 +83,7 @@ initial begin
     PREADY = 0;
     PRDATA = 0;
     
-    i_data = 8'b11110011;
+    i_data = 8'b11001001;
     i_data_ready = 0;
     i_alu_error = 0;
     i_protocol_sel = 0;
