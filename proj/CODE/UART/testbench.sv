@@ -21,7 +21,7 @@ logic o_data_recieved;
 logic o_data_recieved_s;
 
 UART #(.m(m)) model (.i_clk(i_clk), .i_Tx_DV(i_Tx_DV), .i_Tx_b(i_Tx_b), .i_enable(i_enable), .i_select(i_select), .o_Tx_active(o_Tx_active), .o_data_sent(o_data_sent), .o_ready(o_ready), .o_data_recieved(o_data_recieved));
-UART_synth synth(.i_clk(i_clk), .i_Tx_DV(i_Tx_DV), .i_Tx_byte(i_Tx_b), .i_enable(i_enable), .i_select(i_select), .o_Tx_active(o_Tx_active_s), .o_data_sent(o_data_sent_s), .o_ready(o_ready_s), .o_data_recieved(o_data_Recieved_s));
+UART_synth synth(.i_clk(i_clk), .i_Tx_DV(i_Tx_DV), .i_Tx_b(i_Tx_b), .i_enable(i_enable), .i_select(i_select), .o_Tx_active(o_Tx_active_s), .o_data_sent(o_data_sent_s), .o_ready(o_ready_s), .o_data_recieved(o_data_Recieved_s));
 
 initial i_clk = 1;
 always #1 i_clk = ~i_clk;                 

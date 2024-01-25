@@ -133,13 +133,13 @@ always @(posedge i_clk) begin
         else begin
             o_data_sent <= 1'b1;
             r_clock_count <= 0;
-            curr_state <= `CLEANUP;
+            curr_state <= `CLEAN;
             o_Tx_active <= 1'b0;
         end
     end  
        
     /*Stan "Sprzątania" - powrót wszystkich wyjśc i rejestrów do wartości domyślnych + przejście do stanu bezczynności*/
-    `CLEANUP: begin
+    `CLEAN: begin
         o_Tx_serial <= 1'b1;
         o_ready <= 1'b1;
         o_data_recieved <= 1'b0;

@@ -2,10 +2,10 @@
 
 `define UART_DEF
 
-`define IDLE          3'b000
-`define START         3'b001
-`define DATA_BITS     3'b010
-`define STOP          3'b011
-`define CLEANUP       3'b100
+`define IDLE 3'b000
+`define START 3'b001
+`define DATA_BITS 3'b010
+`define STOP 3'b011
+`define CLEAN 3'b100
 
 `endif
